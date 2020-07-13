@@ -56,6 +56,14 @@ namespace WebApplication3.Controllers
             var roles = roleManager.Roles;
             return View(roles);
         }
+
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var users = userManager.Users;
+            return View(users);
+        }
+
         [HttpGet]
         public async Task<IActionResult>EditRole(string id)
         {
