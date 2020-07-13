@@ -1,0 +1,139 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+
+
+.btn-primary {
+    color: white;
+    background-color: #fea382!important;
+    border-color: #1861ac;
+    margin: 0 auto;
+    display: block;
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.btn-warning {
+    color: white;
+    background-color: #fea382 !important;
+}
+
+.card-title {
+    color: #283453;
+}
+
+.btn-primary:hover {
+    background-color: #fea382!important;
+}
+
+.bg-white {
+    background-color: #c9ebfc!important;
+    font-family:Arial;
+}
+
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+a#forgot-password {
+    color: #c9ebfc;
+    font-size: 13px;
+}
+
+a#forgot-password:hover {
+    color: #fea382 !important
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+    margin: 0;
+    height:100%;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    height: 100%;
+    margin: 0;
+    background-color: #283453;
+    color: white;
+}
+
+hr {
+    border-top: 1px solid white;
+}
+
+.pocetna {
+    
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+#userSlika {
+    margin:auto;
+    height:160px;
+    width:160px;
+    display: block;
+}
+
+
+
+
+.col-md-4 {
+    background-color: #2b395c;
+    margin: 0 auto;
+    border-radius: 20px;
+    height: 40%;
+    border: 1px solid #fea382;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: white;
+}
