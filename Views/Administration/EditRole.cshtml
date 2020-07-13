@@ -33,7 +33,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3>Users in this role</h3>
+            <h3 style="color:#283453">Users in this role</h3>
         </div>
         <div class="card-body">
             @if (Model.Users.Any())
@@ -51,8 +51,7 @@
 
         </div>
         <div class="card-footer">
-            <a href="#" class="btn btn-warning">Add Users</a>
-            <a href="#" class="btn btn-danger">Remove Users</a>
+              <a asp-action="EditUsersInRole" asp-controller="Administration" asp-route-roleId="@Model.Id" class="btn btn-warning">Add or remove users</a>
         </div>
     </div>
 

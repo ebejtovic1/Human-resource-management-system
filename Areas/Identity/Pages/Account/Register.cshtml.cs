@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 
 namespace WebApplication3.Areas.Identity.Pages.Account
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;

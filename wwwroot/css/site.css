@@ -25,6 +25,11 @@ a.navbar-brand {
     background-color: #fea382 !important;
 }
 
+.form-check-label {
+    color: #283453;
+}
+
+
 .card-title {
     color: #283453;
 }
