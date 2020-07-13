@@ -123,7 +123,6 @@ namespace WebApplication3.Controllers
             }
             else
             {
-                role.Id = roleId;
                 var result = await roleManager.DeleteAsync(role);
 
                 if (result.Succeeded)
@@ -135,7 +134,7 @@ namespace WebApplication3.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-                return View(roleId);
+                return View("ListRoles");
             }
 
         }
