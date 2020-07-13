@@ -148,6 +148,33 @@ namespace WebApplication3.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                ViewBag.ErrorMeggage = $"User with Id ={userId} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View("ListUsers");
+            }
+
+        }
+
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string roleId)
         {
