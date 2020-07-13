@@ -21,26 +21,34 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    @if (SignInManager.IsSignedIn(User)) { 
+                    @if (SignInManager.IsSignedIn(User)) 
+                    {
 
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark">Employees</a>
-                    </li>
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">Employees</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark">Offices</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">Offices</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark">Reports</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">Reports</a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a asp-action="ListRoles" asp-controller="Administration" class="nav-link text-dark">
+                                        Manage Roles
+                                    </a>
+                                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                    </li>
-
-                </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                </li>
+                            }
+                        </ul>
                     }
                 </div>
             </div>
