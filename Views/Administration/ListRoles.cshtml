@@ -9,7 +9,7 @@
     @if (Model.Any())
 
     {
-        <a class="btn btn-warning"
+        <a class="btn btn-warning style="float: right"
            asp-controller="administration" asp-action="CreateRole">
             Add new
         </a>
@@ -25,7 +25,8 @@
                 <div class="card-footer">
                     <form asp-action="DeleteRole" asp-controller="Administration" asp-route-roleId="@role.Id" method="post">
                         <a class="btn btn-warning" asp-action="EditRole" asp-controller="Administration" asp-route-id="@role.Id">Edit</a>
-                        <button type="submit" class="btn btn-danger" >Delete</button>
+                        <button type="submit" class="btn btn-danger" 
+                                onclick="return confirm('Are you sure you want to delete role: @role.Name')">Delete</button>
                     </form> </div>
             </div>
         }
