@@ -16,6 +16,7 @@ namespace WebApplication3.ViewModels
 
         public string Id { get; set; }
         [Required]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
         [Required] [EmailAddress]
         public string Email { get; set; }
