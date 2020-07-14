@@ -65,6 +65,56 @@ namespace WebApplication3.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                ViewBag.ErrorMeggage = $"User with Id ={id} cannot be found";
+                return View("NotFound");
+            }
+            var userRoles = await userManager.GetRolesAsync(user);
+            var model = new EditUserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+                Roles = userRoles
+
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserViewModel model)
+        {
+            var user = await userManager.FindByIdAsync(model.Id);
+            if (user == null)
+            {
+                ViewBag.ErrorMeggage = $"User with Id ={model.Id} cannot be found";
+                return View("NotFound");
+            }
+
+            else
+            {
+                user.Email = model.Email;
+                user.UserName = model.UserName;
+                var result = await userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers");
+                }
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(model);
+            }
+            
+        }
+
+        [HttpGet]
         public async Task<IActionResult>EditRole(string id)
         {
             var role= await roleManager.FindByIdAsync(id);
