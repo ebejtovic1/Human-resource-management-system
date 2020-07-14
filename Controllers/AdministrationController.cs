@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication3.Models;
 using WebApplication3.ViewModels;
 
 namespace WebApplication3.Controllers
@@ -112,6 +113,41 @@ namespace WebApplication3.Controllers
                 return View(model);
             }
             
+        }
+
+        [HttpGet]
+        public async Task<IActionResult>ManageUserRoles(string userId)
+        {
+            ViewBag.userId = userId;
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                ViewBag.ErrorMeggage = $"User with Id ={userId} cannot be found";
+                return View("NotFound");
+            }
+
+            var model = new List<UserRolesViewModel>();
+            foreach(var role in roleManager.Roles)
+            {
+                var userRolesViewModel = new UserRolesViewModel
+                {
+                    RoleId = role.Id,
+                    RoleName = role.Name
+                };
+
+                if(await userManager.IsInRoleAsync(user, role.Name))
+                {
+                    userRolesViewModel.IsSelected = true;
+                }
+                else
+                {
+                    userRolesViewModel.IsSelected = false;
+                }
+                model.Add(userRolesViewModel);
+            }
+
+            return View(model);
+
         }
 
         [HttpGet]
