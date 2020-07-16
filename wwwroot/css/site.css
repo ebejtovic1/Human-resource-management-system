@@ -21,6 +21,8 @@ a.navbar-brand {
 }
 
 
+
+
 .btn-warning {
     color: white;
     background-color: #fea382 !important;
@@ -109,7 +111,12 @@ hr {
     border-top: 1px solid white;
 }
 
-.pocetna {
+img.pocetna {
+
+    /* The image used */
+    
+    width: 100%;
+
     
 }
 .footer {
