@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-WebApplication3-F457AFA7-199B-4D6C-AC19-57FDD989B1BE</UserSecretsId>
+    <AssemblyName>HRMSCrypto</AssemblyName>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>

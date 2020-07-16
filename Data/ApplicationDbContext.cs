@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication3.Data
+namespace HRMSCrypto.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

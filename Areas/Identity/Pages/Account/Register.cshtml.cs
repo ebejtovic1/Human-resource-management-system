@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
-namespace WebApplication3.Areas.Identity.Pages.Account
+namespace HRMSCrypto.Areas.Identity.Pages.Account
 {
     [Authorize(Roles ="Admin")]
     public class RegisterModel : PageModel

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApplication3.Models;
+using HRMSCrypto.Models;
 
-namespace WebApplication3.Controllers
+namespace HRMSCrypto.Controllers
 {
     [Authorize (Roles ="Admin,User")]
     public class HomeController : Controller

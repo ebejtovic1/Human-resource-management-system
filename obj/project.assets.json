@@ -8533,11 +8533,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\WebApplication3\\WebApplication3.csproj",
-      "projectName": "WebApplication3",
-      "projectPath": "C:\\Users\\User\\source\\repos\\WebApplication3\\WebApplication3.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\HRMSCrypto\\HRMSCrypto.csproj",
+      "projectName": "HRMSCrypto",
+      "projectPath": "C:\\Users\\User\\source\\repos\\HRMSCrypto\\HRMSCrypto.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\WebApplication3\\obj\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\HRMSCrypto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
