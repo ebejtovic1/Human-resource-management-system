@@ -5,6 +5,7 @@
 }
 
 <h2>All users</h2>
+<hr />
 <!---Ako postoji ijedan user-->
 @if (Model.Any())
 
@@ -14,7 +15,7 @@
         Add new
     </a>
 
-    <hr />
+  <hr />
     foreach (var user in Model)
     {
         <div class="card mb-3">
