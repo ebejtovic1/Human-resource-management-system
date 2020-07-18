@@ -18,8 +18,11 @@ namespace HRMSCrypto.Models
         public String Email { get; set; }
         public Double Salary { get; set; }
         public String BrojRacuna { get; set; }
-        //job
-        //department
 
+        public int JobId { get; set; }
+        public virtual JobViewModel Job { get; set; }
+        //department
+        public int DepartmentId { get; set; }
+        public virtual DepartmentViewModel Location { get; set; }
     }
 }

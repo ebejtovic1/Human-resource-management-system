@@ -11,6 +11,6 @@ namespace HRMSCrypto.Models
         public int Id { get; set; }
         public String Name { get; set; }
         public int LocationId { get; set; }
-        public virtual Location Location { get; set; }
+        public virtual LocationViewModel Location { get; set; }
     }
 }

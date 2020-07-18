@@ -12,5 +12,7 @@ namespace HRMSCrypto.Models
         public String Address { get; set; }
         public String City { get; set; }
 
+    
+
     }
 }
