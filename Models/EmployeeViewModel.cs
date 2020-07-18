@@ -13,7 +13,7 @@ namespace HRMSCrypto.Models
         public DateTime DateOfBirth { get; set; }
         public String Address { get; set; }
         public DateTime StartDate { get; set; }
-
+        public String PhoneNumber { get; set; }
         public DateTime EndDate { get; set; }
         public String Email { get; set; }
         public Double Salary { get; set; }
