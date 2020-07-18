@@ -23,6 +23,6 @@ namespace HRMSCrypto.Models
         public virtual JobViewModel Job { get; set; }
         //department
         public int DepartmentId { get; set; }
-        public virtual DepartmentViewModel Location { get; set; }
+        public virtual DepartmentViewModel Department { get; set; }
     }
 }
