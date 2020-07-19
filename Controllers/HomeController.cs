@@ -9,7 +9,9 @@ using Microsoft.Extensions.Logging;
 using HRMSCrypto.Models;
 
 namespace HRMSCrypto.Controllers
+
 {
+    [RequireHttps]
     [Authorize (Roles ="Admin,User")]
     public class HomeController : Controller
     {

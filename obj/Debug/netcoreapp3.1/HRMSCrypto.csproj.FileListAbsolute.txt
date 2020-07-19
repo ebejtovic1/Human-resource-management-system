@@ -368,9 +368,6 @@ C:\Users\User\source\repos\HRMSCrypto\bin\Debug\netcoreapp3.1\runtimes\win-arm\n
 C:\Users\User\source\repos\HRMSCrypto\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\User\source\repos\HRMSCrypto\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\User\source\repos\HRMSCrypto\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\HRMSCrypto.csproj.CoreCompileInputs.cache
-C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\HRMSCrypto.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\HRMSCrypto.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Views\LocationViewModels\Create.cshtml.g.cs
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Views\LocationViewModels\Delete.cshtml.g.cs
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Views\LocationViewModels\Details.cshtml.g.cs
@@ -391,3 +388,12 @@ C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Views\Employ
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Views\EmployeeViewModels\Details.cshtml.g.cs
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Views\EmployeeViewModels\Edit.cshtml.g.cs
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Views\EmployeeViewModels\Index.cshtml.g.cs
+C:\Users\User\source\repos\HRMSCrypto\bin\Debug\netcoreapp3.1\SendGrid.dll
+C:\Users\User\source\repos\HRMSCrypto\bin\Debug\netcoreapp3.1\StarkbankEcdsa.dll
+C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\HRMSCrypto.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\HRMSCrypto.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\HRMSCrypto.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_LoginPartial.cshtml.g.cs
+C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs

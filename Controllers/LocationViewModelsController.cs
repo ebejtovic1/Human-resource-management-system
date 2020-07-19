@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HRMSCrypto.Controllers
 {
+    [RequireHttps]
     [Authorize(Roles = "Admin,User")]
     public class LocationViewModelsController : Controller
     {

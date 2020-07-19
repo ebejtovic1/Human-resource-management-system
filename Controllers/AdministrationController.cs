@@ -10,6 +10,7 @@ using HRMSCrypto.ViewModels;
 
 namespace HRMSCrypto.Controllers
 {
+    [RequireHttps]
     [Authorize(Roles ="Admin")]
     public class AdministrationController : Controller
     {
