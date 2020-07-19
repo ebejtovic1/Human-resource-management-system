@@ -2,16 +2,16 @@
 
 @{
     ViewData["Title"] = "Create";
-   
+
 }
 
-<h1>Create</h1>
+<h2>Add a new job</h2>
 
-<h4>JobViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
+            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -23,10 +23,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
