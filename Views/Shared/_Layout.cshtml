@@ -24,36 +24,44 @@
                     @if (SignInManager.IsSignedIn(User)) 
                     {
 
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark">Employees</a>
-                            </li>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-action="Index" asp-controller="EmployeeViewModels">Employees</a>
+                    </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark">Departments</a>
-                            </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-action="Index" asp-controller="DepartmentViewModels">Departments</a>
+                    </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark">Reports</a>
-                            </li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Manage
-                                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-action="Index" asp-controller="LocationViewModels">Locations</a>
+                    </li>
 
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a asp-action="ListUsers" asp-controller="Administration" class="dropdown-item">Users</a>
-                                        <a asp-action="ListRoles" asp-controller="Administration" class="dropdown-item">Roles</a>
-                                    </div>
-                                </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-action="Index" asp-controller="JobViewModels">Jobs</a>
+                    </li>
 
-                                <!---<li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                                </li>-->
-                            }
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark">Reports</a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a asp-action="ListUsers" asp-controller="Administration" class="dropdown-item">Users</a>
+                                <a asp-action="ListRoles" asp-controller="Administration" class="dropdown-item">Roles</a>
+                            </div>
+                        </li>
+
+                        <!---<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>-->
+                    }
+                </ul>
                     }
                 </div>
             </div>

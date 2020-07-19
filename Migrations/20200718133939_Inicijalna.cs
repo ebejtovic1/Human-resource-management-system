@@ -66,7 +66,7 @@ namespace HRMSCrypto.Migrations
                     Address = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     PhoneNumber = table.Column<string>(nullable: true),
-                    EndDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Salary = table.Column<double>(nullable: false),
                     BrojRacuna = table.Column<string>(nullable: true),

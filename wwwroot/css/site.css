@@ -107,6 +107,18 @@ body {
     color: white;
 }
 
+.table thead th {
+    background-color: #f3f3f3;
+    vertical-align: top;
+    color: #283453;
+    border-bottom: 2px solid #fea382;
+}
+
+.table td, .table th {
+    background-color: white;
+    color: #283453;
+    border-top: 1px solid #fea382;
+}
 hr {
     border-top: 1px solid white;
 }
@@ -118,6 +130,10 @@ img.pocetna {
     width: 100%;
 
     
+}
+
+.table{
+    color:white;
 }
 .footer {
   position: absolute;

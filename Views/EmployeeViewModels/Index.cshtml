@@ -2,14 +2,18 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml";
+  
 }
 
-<h1>Index</h1>
+<h2>All employees</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<hr />
+
+<a class="btn btn-warning" asp-action="Create">
+    Add new
+</a>
+
+<hr />
 <table class="table">
     <thead>
         <tr>
@@ -31,9 +35,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
@@ -74,9 +76,6 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
@@ -86,14 +85,14 @@
                 @Html.DisplayFor(modelItem => item.BrojRacuna)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Job.Id)
+                @Html.DisplayFor(modelItem => item.Job.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Department.Id)
+                @Html.DisplayFor(modelItem => item.Department.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>

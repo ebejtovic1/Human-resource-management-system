@@ -25,5 +25,11 @@ namespace HRMSCrypto.Models
         }
 
         public DbSet<HRMSCrypto.Models.EmployeeViewModel> EmployeeViewModel { get; set; }
+
+        public DbSet<HRMSCrypto.Models.LocationViewModel> LocationViewModel { get; set; }
+
+        public DbSet<HRMSCrypto.Models.JobViewModel> JobViewModel { get; set; }
+
+        public DbSet<HRMSCrypto.Models.DepartmentViewModel> DepartmentViewModel { get; set; }
     }
 }
