@@ -13,7 +13,23 @@
     Add new
 </a>
 
+
+<div>
+    <br />
+</div>
+
+
+@using (Html.BeginForm("Index", "JobViewModels", FormMethod.Get))
+{
+    <form class="form-inline md-form mr-auto mb-4">
+        <input id="searching" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      
+    </form>
+
+}
 <hr />
+
+
 <table class="table">
     <thead>
         <tr>

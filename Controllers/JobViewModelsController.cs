@@ -22,9 +22,9 @@ namespace HRMSCrypto.Controllers
         }
 
         // GET: JobViewModels
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searching)
         {
-            return View(await _context.JobViewModel.ToListAsync());
+            return View(await _context.JobViewModel.Where(x=>x.Name.Contains(searching) || searching==null).ToListAsync());
         }
 
         // GET: JobViewModels/Details/5

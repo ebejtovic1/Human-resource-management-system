@@ -12,6 +12,25 @@
     Add new
 </a>
 
+<div>
+    <br />
+</div>
+
+@using (Html.BeginForm("Index", "LocationViewModels", FormMethod.Get))
+{
+
+    <div class="input-group">
+       <input id="searching" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+       
+            <select class="btn btn-outline-light" name="selected" id="selected">
+                <option value="address">Address</option>
+                <option value="city">City</option>
+            </select>
+        </div>
+    </div>
+}
+
 <hr />
 <table class="table">
     <thead>

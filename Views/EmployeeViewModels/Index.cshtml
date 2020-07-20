@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
-  
+
 }
 
 <h2>All employees</h2>
@@ -12,6 +12,28 @@
 <a class="btn btn-warning" asp-action="Create">
     Add new
 </a>
+
+<div>
+    <br />
+</div>
+
+@using (Html.BeginForm("Index", "EmployeeViewModels", FormMethod.Get))
+{
+
+    <div class="input-group">
+        <input id="searching" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+
+            <select class="btn btn-outline-light" name="selected" id="selected">
+                <option value="name">Name</option>
+                <option value="lastname">Last name</option>
+                <option value="job">Job</option>
+                <option value="department">Department</option>
+            </select>
+        </div>
+    </div>
+}
+
 
 <hr />
 <table class="table">
@@ -35,14 +57,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
-          
+
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Salary)
             </th>
-          
+
             <th>
                 @Html.DisplayNameFor(model => model.Job)
             </th>
@@ -53,45 +75,47 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salary)
-            </td>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.Job.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
