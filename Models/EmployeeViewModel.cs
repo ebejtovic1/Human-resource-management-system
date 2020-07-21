@@ -31,7 +31,7 @@ namespace HRMSCrypto.Models
         [Display(Name = "Phone number")]
         public String PhoneNumber { get; set; }
 
-
+        [Display(Name = "End date")]
         public Nullable<DateTime> EndDate { get; set; }
         [Required]
         [EmailAddress]

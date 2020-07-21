@@ -34,7 +34,8 @@
             <div class="form-group row">
                 <label asp-for="DateOfBirth" class="col-sm-3 col-form-label"></label>
                 <div class="col-sm-7">
-                    <input asp-for="DateOfBirth" class="form-control" />
+
+                    <input asp-for="DateOfBirth" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
                     <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                 </div>
             </div>
@@ -49,7 +50,7 @@
             <div class="form-group row">
                 <label asp-for="StartDate" class="col-sm-3 col-form-label"></label>
                 <div class="col-sm-7">
-                    <input asp-for="StartDate" class="form-control" />
+                    <input asp-for="StartDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
                     <span asp-validation-for="StartDate" class="text-danger"></span>
                 </div>
             </div>

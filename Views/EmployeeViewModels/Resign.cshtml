@@ -1,44 +1,60 @@
 ﻿@model HRMSCrypto.Models.EmployeeViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Resign";
 
 }
-<h2>Edit employee</h2>
+    <h2>Are you sure you want to fire this employee?</h2>
 
 <hr />
 
-<form asp-action="Edit">
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+</div>
+
+<form asp-action="Resign">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="Id" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="Id" disabled class="form-control" />
         </div>
     </div>
 
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="Name" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="Name" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
     </div>
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="LastName" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="LastName" class="form-control" />
             <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
     </div>
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="DateOfBirth" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="DateOfBirth" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
             <span asp-validation-for="DateOfBirth" class="text-danger"></span>
         </div>
     </div>
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="Address" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="Address" class="form-control" />
@@ -46,7 +62,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="StartDate" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="StartDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
@@ -54,7 +70,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="PhoneNumber" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="PhoneNumber" class="form-control" />
@@ -62,8 +78,15 @@
         </div>
     </div>
 
-
     <div class="form-group row">
+        <label asp-for="EndDate" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="EndDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div hidden class="form-group row">
         <label asp-for="Email" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="Email" class="form-control" />
@@ -71,7 +94,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="Salary" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="Salary" class="form-control" />
@@ -79,7 +102,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="BrojRacuna" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <input asp-for="BrojRacuna" class="form-control" />
@@ -87,7 +110,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="JobId" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <select asp-for="JobId" class="form-control" asp-items="ViewBag.JobId"></select>
@@ -95,7 +118,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    <div hidden class="form-group row">
         <label asp-for="DepartmentId" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
@@ -109,7 +132,7 @@
         <a asp-action="Index" class="btn btn-warning">Cancel</a>
     </div>
 </form>
-  
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

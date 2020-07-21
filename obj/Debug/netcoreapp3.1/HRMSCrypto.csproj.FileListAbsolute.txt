@@ -397,3 +397,4 @@ C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Areas\Identi
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_LoginPartial.cshtml.g.cs
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
 C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\Users\User\source\repos\HRMSCrypto\obj\Debug\netcoreapp3.1\Razor\Views\EmployeeViewModels\Resign.cshtml.g.cs

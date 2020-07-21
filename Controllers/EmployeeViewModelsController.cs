@@ -99,6 +99,26 @@ namespace HRMSCrypto.Controllers
             return View(employeeViewModel);
         }
 
+
+        // GET: EmployeeViewModels/Edit/5
+        public async Task<IActionResult> Resign(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var employeeViewModel = await _context.EmployeeViewModel.FindAsync(id);
+            if (employeeViewModel == null)
+            {
+                return NotFound();
+            }
+            ViewData["DepartmentId"] = new SelectList(_context.DepartmentViewModel, "Id", "Name", employeeViewModel.DepartmentId);
+            ViewData["JobId"] = new SelectList(_context.JobViewModel, "Id", "Name", employeeViewModel.JobId);
+            return View(employeeViewModel);
+        }
+
+
         // GET: EmployeeViewModels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -153,6 +173,44 @@ namespace HRMSCrypto.Controllers
             ViewData["JobId"] = new SelectList(_context.JobViewModel, "Id", "Name", employeeViewModel.JobId);
             return View(employeeViewModel);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Resign(int id, [Bind("Id,Name,LastName,DateOfBirth,Address,StartDate,PhoneNumber,EndDate,Email,Salary,BrojRacuna,JobId,DepartmentId")] EmployeeViewModel employeeViewModel)
+        {
+            if (id != employeeViewModel.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(employeeViewModel);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!EmployeeViewModelExists(employeeViewModel.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["DepartmentId"] = new SelectList(_context.DepartmentViewModel, "Id", "Name", employeeViewModel.DepartmentId);
+            ViewData["JobId"] = new SelectList(_context.JobViewModel, "Id", "Name", employeeViewModel.JobId);
+            return View(employeeViewModel);
+        }
+
+
+
 
         // GET: EmployeeViewModels/Delete/5
         public async Task<IActionResult> Delete(int? id)
