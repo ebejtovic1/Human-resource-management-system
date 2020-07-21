@@ -5,23 +5,15 @@
 
 }
 
-<h2>All employees</h2>
+<h2>All former employees</h2>
 
 <hr />
-
-<a class="btn btn-warning" asp-action="Create">
-    Add new
-</a>
-
-<a class="btn btn-warning" asp-action="FormerEmployees">
-    List of former employees
-</a>
 
 <div>
     <br />
 </div>
 
-@using (Html.BeginForm("Index", "EmployeeViewModels", FormMethod.Get))
+@using (Html.BeginForm("FormerEmployees", "EmployeeViewModels", FormMethod.Get))
 {
 
     <div class="input-group">
@@ -49,20 +41,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
-        
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-          
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salary)
+                @Html.DisplayNameFor(model => model.EndDate)
             </th>
 
             <th>
@@ -84,25 +65,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
-               <!-- <td>
-
-                    @item.DateOfBirth.ToString("dd/MM/yyyy")
-                 
-                </td>-->
                 <td>
-                    @Html.DisplayFor(modelItem => item.Address)
+                    @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
-             
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Salary)
-                </td>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Job.Name)
                 </td>
@@ -110,10 +75,9 @@
                     @Html.DisplayFor(modelItem => item.Department.Name)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+             
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Resign" asp-route-id="@item.Id">Resign</a>
-                   <!-- <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>-->
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

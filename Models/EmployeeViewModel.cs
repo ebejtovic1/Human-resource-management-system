@@ -18,7 +18,7 @@ namespace HRMSCrypto.Models
         [DataType(DataType.Text)]
         [RegularExpression(@"^[a-zA-ZàáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "The last name may only contain letters, apostrophes, spaces, hyphens, commas and dots")]
         [Display(Name = "Last name")]
-        public string LastName { get; set;  }
+        public string LastName { get; set; }
         [Display(Name = "Date of birth")]
         public DateTime DateOfBirth { get; set; }
         [Required]
@@ -27,7 +27,7 @@ namespace HRMSCrypto.Models
         [Display(Name = "Start date")]
         public DateTime StartDate { get; set; }
 
-        //egularExpression("([0-9]|[\/+()-])+", ErrorMessage="Invalid phone number")]
+        [RegularExpression("([0-9])+", ErrorMessage= "Phone number can only contain digits")]
         [Display(Name = "Phone number")]
         public String PhoneNumber { get; set; }
 
@@ -38,7 +38,7 @@ namespace HRMSCrypto.Models
         public String Email { get; set; }
  
         public Double Salary { get; set; }
-       
+        [RegularExpression("^[A-Za-z0-9]+", ErrorMessage = "This field can only contains digits and letters")]
         [Display(Name = "Bank account number")]
         [Required]
         public String BrojRacuna { get; set; }

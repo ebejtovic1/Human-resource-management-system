@@ -52,6 +52,37 @@ namespace HRMSCrypto.Controllers
 
         }
 
+        // GET: EmployeeViewModels
+        public async Task<IActionResult> FormerEmployees(string searching, string selected)
+        {
+            var myContext = _context.EmployeeViewModel.Include(e => e.Department).Include(e => e.Job);
+
+
+            if (selected == "name")
+            {
+                return View(await myContext.Where(x => (x.EndDate != null && (x.Name.Contains(searching) || searching == null))).ToListAsync());
+            }
+            else if (selected == "lastname")
+            {
+                return View(await myContext.Where(x => (x.EndDate != null && (x.LastName.Contains(searching) || searching == null))).ToListAsync());
+            }
+
+            else if (selected == "department")
+            {
+                return View(await myContext.Where(x => (x.EndDate != null && (x.Department.Name.Contains(searching) || searching == null))).ToListAsync());
+
+            }
+            else
+            {
+                return View(await myContext.Where(x => (x.EndDate != null && (x.Job.Name.Contains(searching) || searching == null))).ToListAsync());
+
+            }
+
+
+
+
+        }
+
         // GET: EmployeeViewModels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
