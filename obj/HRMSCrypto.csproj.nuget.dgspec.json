@@ -72,6 +72,10 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.18.0, )"
+            },
+            "iTextSharp.LGPLv2.Core": {
+              "target": "Package",
+              "version": "[1.6.7, )"
             }
           },
           "imports": [

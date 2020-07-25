@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HRMSCrypto.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Text.RegularExpressions;
+using System.Web;
+using HRMSCrypto.Reports;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace HRMSCrypto.Controllers
 {
@@ -15,6 +20,7 @@ namespace HRMSCrypto.Controllers
     public class EmployeeViewModelsController : Controller
     {
         private readonly MyContext _context;
+        private IWebHostEnvironment _pdfWebHostEnvironment;
 
         public EmployeeViewModelsController(MyContext context)
         {
@@ -24,30 +30,40 @@ namespace HRMSCrypto.Controllers
         // GET: EmployeeViewModels
         public async Task<IActionResult> Index(string searching, string selected)
         {
+            //Regex regexValidation = new Regex("^[#.0-9a-zA-ZćčšđžĆČŠĐŽ\\s,-]+$");
             var myContext = _context.EmployeeViewModel.Include(e => e.Department).Include(e => e.Job);
 
+            
+                if (selected == "name")
+                {
+                    return View(await myContext.Where(x => (x.EndDate == null && (x.Name.Contains(searching) || searching == null))).ToListAsync());
+                }
+                else if (selected == "lastname")
+                {
+                    return View(await myContext.Where(x => (x.EndDate == null && (x.LastName.Contains(searching) || searching == null))).ToListAsync());
+                }
 
-            if (selected == "name")
-            {
-                return View(await myContext.Where(x => (x.EndDate == null && (x.Name.Contains(searching) || searching == null))).ToListAsync());
-            }
-            else if(selected=="lastname")
-            {
-                return View(await myContext.Where(x => (x.EndDate == null && (x.LastName.Contains(searching) || searching == null))).ToListAsync());
-            }
+                else if (selected == "department")
+                {
+                    return View(await myContext.Where(x => (x.EndDate == null && (x.Department.Name.Contains(searching) || searching == null))).ToListAsync());
 
-            else if(selected=="department")
-            {
-                return View(await myContext.Where(x => (x.EndDate == null && (x.Department.Name.Contains(searching) || searching == null))).ToListAsync());
-
-            }
-            else
-            {
-                return View(await myContext.Where(x => (x.EndDate == null && (x.Job.Name.Contains(searching) || searching == null))).ToListAsync());
-
-            }
-
-
+                }
+                else
+                {
+                    return View(await myContext.Where(x => (x.EndDate == null && (x.Job.Name.Contains(searching) || searching == null))).ToListAsync());
+                    
+                }
+            //ovako je bilo i ranije?
+            //nmg, nema sanse
+            //else
+            //{
+            //    if (searching != null)
+            //    {
+            //        searching.Remove(0);
+            //        searching.Insert(0, "Invalid search!");
+            //    }
+            //    return View(await myContext.Where(x => x.EndDate == null).ToListAsync());
+            //}
 
 
         }
@@ -100,8 +116,26 @@ namespace HRMSCrypto.Controllers
                 return NotFound();
             }
 
+            //var myContext = _context.EmployeeViewModel.Include(e => e.Department).Include(e => e.Job);
+            //return myContext.ToList();
+
             return View(employeeViewModel);
         }
+
+       
+        public async Task<IActionResult> Report(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var employee = _context.EmployeeViewModel.Find(id);
+            ReportEmployee rep = new ReportEmployee(_pdfWebHostEnvironment, employee);
+
+
+            return File(rep.Report(), "application/pdf");
+        }
+       
 
         // GET: EmployeeViewModels/Create
         public IActionResult Create()

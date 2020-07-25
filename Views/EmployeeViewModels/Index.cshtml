@@ -24,8 +24,9 @@
 @using (Html.BeginForm("Index", "EmployeeViewModels", FormMethod.Get))
 {
 
-    <div class="input-group">
-        <input id="searching" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    <div class="input-group" id="div-search">
+        <input id="searchingField" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" runat="server">
+        
         <div class="input-group-append">
 
             <select class="btn btn-outline-light" name="selected" id="selected">
