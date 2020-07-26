@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace HRMSCrypto.Models
 {
-    public class EmployeeViewModel
+    public class EmployeeCreateViewModel
     {
-        public int Id { get; set; }
-
         [Required]
         [DataType(DataType.Text)]
         [RegularExpression(@"^[a-zA-ZàáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "The name may only contain letters, apostrophes, spaces, hyphens, commas and dots")]
@@ -27,7 +26,7 @@ namespace HRMSCrypto.Models
         [Display(Name = "Start date")]
         public DateTime StartDate { get; set; }
 
-        [RegularExpression("([0-9])+", ErrorMessage= "Phone number can only contain digits")]
+        [RegularExpression("([0-9])+", ErrorMessage = "Phone number can only contain digits")]
         [Display(Name = "Phone number")]
         public String PhoneNumber { get; set; }
 
@@ -36,13 +35,13 @@ namespace HRMSCrypto.Models
         [Required]
         [EmailAddress]
         public String Email { get; set; }
- 
+
         public Double Salary { get; set; }
         [RegularExpression("^[A-Za-z0-9]+", ErrorMessage = "This field can only contains digits and letters")]
         [Display(Name = "Bank account number")]
         [Required]
         public String BrojRacuna { get; set; }
-        public String PhotoPath { get; set; }
+        public IFormFile Photo { get; set; }
         [Display(Name = "Job")]
         public int JobId { get; set; }
         public virtual JobViewModel Job { get; set; }
@@ -51,3 +50,4 @@ namespace HRMSCrypto.Models
         public virtual DepartmentViewModel Department { get; set; }
     }
 }
+

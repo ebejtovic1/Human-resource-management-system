@@ -1,4 +1,4 @@
-﻿@model HRMSCrypto.Models.EmployeeViewModel
+﻿@model HRMSCrypto.Models.EmployeeCreateViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-6">
-        <form asp-action="Create">
+        <form enctype="multipart/form-data" asp-controller="EmployeeViewModels" asp-action="Create">
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group row">
@@ -62,10 +62,10 @@
                 </div>
             </div>
             <!--<div class="form-group">
-        <label asp-for="EndDate" class="control-label"></label>
-        <input asp-for="EndDate" class="form-control" />
-        <span asp-validation-for="EndDate" class="text-danger"></span>
-    </div>-->
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>-->
             <div class="form-group row">
                 <label asp-for="Email" class="col-sm-3 col-form-label"></label>
                 <div class="col-sm-7">
@@ -105,6 +105,17 @@
                     <span asp-validation-for="DepartmentId" class="text-danger"></span>
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label asp-for="Photo" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-7">
+                    <div class="custom-file">
+                        <input asp-for="Photo" class="form-control custom-file-input" />
+                        <label class="custom-file-label">Choose File...</label>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -114,5 +125,14 @@
 
 
 @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function (){
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
 }

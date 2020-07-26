@@ -22,16 +22,9 @@ namespace HRMSCrypto.Controllers
         }
 
         // GET: LocationViewModels
-        public async Task<IActionResult> Index(string searching, string selected)
+        public async Task<IActionResult> Index(string searching)
         {
-            if (selected == "address")
-            {
-                return View(await _context.LocationViewModel.Where(x => x.Address.Contains(searching) || searching == null).ToListAsync());
-            }
-            else
-            {
-                return View(await _context.LocationViewModel.Where(x=>x.City.Contains(searching) || searching==null).ToListAsync());
-            }
+                return View(await _context.LocationViewModel.Where(x => (x.Address.Contains(searching) || x.City.Contains(searching))|| searching == null).ToListAsync());
         }
 
         // GET: LocationViewModels/Details/5

@@ -2,13 +2,46 @@
 
 @{
     ViewData["Title"] = "Details";
-   
+    var photoPath = "~/img/"+ (Model.PhotoPath ?? "icona.png");
 }
 
 <h2>Details</h2>
 <hr />
 
-<div>
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card text-center">
+            <div class="card-header">
+                <h2 style="color: #283453;">@Model.Name @Model.LastName</h2>
+            </div>
+
+            <div class="card-body">
+                <img class="card-img-top" style="height: 300px; width:300px;" src="@photoPath" asp-append-version="true" />
+                <h5 style="color: #283453;">Date of birth: @Model.DateOfBirth.ToString("dd/MM/yyyy")</h5>
+                <h5 style="color: #283453;">Adress: @Model.Address</h5>
+                <h5 style="color: #283453;">Start date: @Model.StartDate.ToString("dd/MM/yyyy")</h5>
+                <h5 style="color: #283453;">Phone number: @Model.PhoneNumber</h5>
+                <h5 style="color: #283453;">End date: @Model.EndDate</h5>
+                <h5 style="color: #283453;">Email: @Model.Email</h5>
+                <h5 style="color: #283453;">Salary: @Model.Salary</h5>
+                <h5 style="color: #283453;">Bank account number: @Model.BrojRacuna</h5>
+                <h5 style="color: #283453;">Job: @Model.Job.Name</h5>
+                <h5 style="color: #283453;">Department: @Model.Department.Name</h5>
+
+
+            </div>
+
+            <div class="card-footer">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                
+                <a asp-action="Report" asp-route-id="@Model.Id" class="btn btn-warning" id="pdf" target="_blank">Print report</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--<div>
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -89,8 +122,5 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
-    <a asp-action="Index" class="btn btn-warning">Back to List</a>
-    <a asp-action="Report" asp-route-id="@Model.Id" class="btn btn-warning" id="pdf" target="_blank">Print report</a>
-</div>
+    -->
+

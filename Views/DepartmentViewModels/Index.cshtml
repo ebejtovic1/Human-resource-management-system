@@ -21,16 +21,10 @@
 @using (Html.BeginForm("Index", "DepartmentViewModels", FormMethod.Get))
 {
 
-    <div class="input-group">
+    <form class="form-inline md-form mr-auto mb-4">
         <input id="searching" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
 
-            <select class="btn btn-outline-light" name="selected" id="selected">
-                <option value="name">Name</option>
-                <option value="location">Location</option>
-            </select>
-        </div>
-    </div>
+    </form>
 }
 
 <hr />

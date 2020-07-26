@@ -24,100 +24,32 @@
 @using (Html.BeginForm("Index", "EmployeeViewModels", FormMethod.Get))
 {
 
-    <div class="input-group" id="div-search">
-        <input id="searchingField" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" runat="server">
-        
-        <div class="input-group-append">
+    <form class="form-inline md-form mr-auto mb-4">
+        <input id="searching" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 
-            <select class="btn btn-outline-light" name="selected" id="selected">
-                <option value="name">Name</option>
-                <option value="lastname">Last name</option>
-                <option value="job">Job</option>
-                <option value="department">Department</option>
-            </select>
-        </div>
-    </div>
+    </form>
+
 }
 
 
 <hr />
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-        
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-          
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
+<div class="card-deck">
+    @foreach (var employee in Model)
 
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salary)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.Job)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Department)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-               <!-- <td>
-
-                    @item.DateOfBirth.ToString("dd/MM/yyyy")
-                 
-                </td>-->
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-             
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Salary)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Job.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Department.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Resign" asp-route-id="@item.Id">Resign</a>
-                   <!-- <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>-->
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    {
+        var photoPath = "~/img/" + (employee.PhotoPath ?? "icona.png");
+        <div class="card m-3">
+            <div class="card-header">
+                <h6 style="color: #283453;">@employee.Name @employee.LastName</h6>
+                <h10>@employee.Job.Name, @employee.Department.Name</h10>
+            </div>
+            <img class="imageThumbnail" src="@photoPath" asp-append-version="true" />
+            <div class="card-footer text-center">
+                <a class="btn btn-dark" asp-action="Edit" asp-route-id="@employee.Id">Edit</a> |
+                <a class="btn btn-dark" asp-action="Details" asp-route-id="@employee.Id">Details</a> |
+                <a class="btn btn-dark" asp-action="Resign" asp-route-id="@employee.Id">Resign</a>
+            </div>
+        </div>
+    }
+</div>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>

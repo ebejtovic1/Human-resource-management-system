@@ -9,7 +9,9 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 
-
+.navbar-nav .nav-link {
+   margin-left: 5px;
+}
 .btn-primary {
     color: white;
     background-color: #fea382!important;
@@ -20,7 +22,16 @@ a.navbar-brand {
     margin-bottom: 10px;
 }
 
+.imageThumbnail{
+    height:200px;
+    width:200px;
+    margin: 0 auto;
+}
 
+h10 {
+    color: gray;
+    font-size: 11px;
+}
 
 
 .btn-warning {
@@ -141,9 +152,9 @@ img.pocetna {
     display:block;
     position: absolute;
     bottom: 0px;
-  width: 100%;
-  white-space: nowrap;
-line-height: 60px; /* Vertically center the text there */
+    color: #fea382;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
 
 #userSlika {
@@ -184,4 +195,26 @@ label {
 
 .form-control {
     border: 1px solid #fea382;
+}
+
+
+@media (min-width: 576px) {
+    .card-deck .card {
+        min-width: 50.1%; /* 1 Column */
+        margin-bottom: 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-deck .card {
+        min-width: 33.4%; /* 2 Columns */
+        max-width: 46%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-deck .card {
+        min-width: 25.1%; /* 3 Columns */
+        max-width:30.7%
+    }
 }

@@ -42,10 +42,6 @@
                         </div>
                     </li>
 
-
-                    <li class="nav-item">
-                        <a class="nav-link text-dark">Reports</a>
-                    </li>
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item dropdown">
@@ -75,15 +71,12 @@
         </main>
     </div>
 
-    <div class="border-top footer text-muted">
+    <!--<div class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - Human Resource Management System
         </div>
-    </div>
+    </div>-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        $("#userNumber").mask("999-999-999");
-    </script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)

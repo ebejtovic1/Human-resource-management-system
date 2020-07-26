@@ -12,6 +12,9 @@ using System.Web;
 using HRMSCrypto.Reports;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.IO;
 
 namespace HRMSCrypto.Controllers
 {
@@ -21,49 +24,22 @@ namespace HRMSCrypto.Controllers
     {
         private readonly MyContext _context;
         private IWebHostEnvironment _pdfWebHostEnvironment;
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        public EmployeeViewModelsController(MyContext context)
+        public EmployeeViewModelsController(MyContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            this.hostingEnvironment = hostingEnvironment;
+           
         }
-
+      
         // GET: EmployeeViewModels
         public async Task<IActionResult> Index(string searching, string selected)
         {
-            //Regex regexValidation = new Regex("^[#.0-9a-zA-ZćčšđžĆČŠĐŽ\\s,-]+$");
+        
             var myContext = _context.EmployeeViewModel.Include(e => e.Department).Include(e => e.Job);
-
-            
-                if (selected == "name")
-                {
-                    return View(await myContext.Where(x => (x.EndDate == null && (x.Name.Contains(searching) || searching == null))).ToListAsync());
-                }
-                else if (selected == "lastname")
-                {
-                    return View(await myContext.Where(x => (x.EndDate == null && (x.LastName.Contains(searching) || searching == null))).ToListAsync());
-                }
-
-                else if (selected == "department")
-                {
-                    return View(await myContext.Where(x => (x.EndDate == null && (x.Department.Name.Contains(searching) || searching == null))).ToListAsync());
-
-                }
-                else
-                {
-                    return View(await myContext.Where(x => (x.EndDate == null && (x.Job.Name.Contains(searching) || searching == null))).ToListAsync());
-                    
-                }
-            //ovako je bilo i ranije?
-            //nmg, nema sanse
-            //else
-            //{
-            //    if (searching != null)
-            //    {
-            //        searching.Remove(0);
-            //        searching.Insert(0, "Invalid search!");
-            //    }
-            //    return View(await myContext.Where(x => x.EndDate == null).ToListAsync());
-            //}
+            return View(await myContext.Where(x => (x.EndDate == null && (x.Name.Contains(searching) || x.LastName.Contains(searching) || x.Department.Name.Contains(searching) || x.Job.Name.Contains(searching) || searching == null))).ToListAsync());
+               
 
 
         }
@@ -93,10 +69,6 @@ namespace HRMSCrypto.Controllers
                 return View(await myContext.Where(x => (x.EndDate != null && (x.Job.Name.Contains(searching) || searching == null))).ToListAsync());
 
             }
-
-
-
-
         }
 
         // GET: EmployeeViewModels/Details/5
@@ -150,12 +122,41 @@ namespace HRMSCrypto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,LastName,DateOfBirth,Address,StartDate,PhoneNumber,EndDate,Email,Salary,BrojRacuna,JobId,DepartmentId")] EmployeeViewModel employeeViewModel)
+        public async Task<IActionResult> Create(EmployeeCreateViewModel employeeViewModel)
         {
-            //employeeViewModel.EndDate = null;
+
             if (ModelState.IsValid)
             {
-                _context.Add(employeeViewModel);
+                string uniqueFileName = null;
+                if (employeeViewModel.Photo != null)
+                {
+                    String uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "img");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + employeeViewModel.Photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    employeeViewModel.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+
+                }
+                EmployeeViewModel newEmployee = new EmployeeViewModel
+                {
+                    Name = employeeViewModel.Name,
+                    LastName = employeeViewModel.LastName,
+                    DateOfBirth = employeeViewModel.DateOfBirth,
+                    Address = employeeViewModel.Address,
+                    StartDate = employeeViewModel.StartDate,
+                    PhoneNumber = employeeViewModel.PhoneNumber,
+                    EndDate = employeeViewModel.EndDate,
+                    Email = employeeViewModel.Email,
+                    Salary = employeeViewModel.Salary,
+                    BrojRacuna = employeeViewModel.BrojRacuna,
+                    PhotoPath = uniqueFileName,
+                    Job=employeeViewModel.Job,
+                    JobId = employeeViewModel.JobId,
+                    Department = employeeViewModel.Department,
+                    DepartmentId = employeeViewModel.DepartmentId
+
+                };
+
+                _context.Add(newEmployee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -207,12 +208,13 @@ namespace HRMSCrypto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,LastName,DateOfBirth,Address,StartDate,PhoneNumber,EndDate,Email,Salary,BrojRacuna,JobId,DepartmentId")] EmployeeViewModel employeeViewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,LastName,DateOfBirth,Address,StartDate,PhoneNumber,EndDate,Email,Salary,BrojRacuna,PhotoPath,JobId,DepartmentId")] EmployeeViewModel employeeViewModel)
         {
             if (id != employeeViewModel.Id)
             {
                 return NotFound();
             }
+         
 
             if (ModelState.IsValid)
             {
@@ -242,7 +244,7 @@ namespace HRMSCrypto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Resign(int id, [Bind("Id,Name,LastName,DateOfBirth,Address,StartDate,PhoneNumber,EndDate,Email,Salary,BrojRacuna,JobId,DepartmentId")] EmployeeViewModel employeeViewModel)
+        public async Task<IActionResult> Resign(int id, [Bind("Id,Name,LastName,DateOfBirth,Address,StartDate,PhoneNumber,EndDate,Email,Salary,BrojRacuna,PhotoPath,JobId,DepartmentId")] EmployeeViewModel employeeViewModel)
         {
             if (id != employeeViewModel.Id)
             {

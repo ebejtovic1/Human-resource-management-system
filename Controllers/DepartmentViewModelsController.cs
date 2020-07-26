@@ -22,17 +22,11 @@ namespace HRMSCrypto.Controllers
         }
 
         // GET: DepartmentViewModels
-        public async Task<IActionResult> Index(string searching, string selected)
+        public async Task<IActionResult> Index(string searching)
         {
             var myContext = _context.DepartmentViewModel.Include(d => d.Location);
-            if (selected == "name")
-            {
-                return View(await myContext.Where(x => x.Name.Contains(searching) || searching == null).ToListAsync());
-            }
-            else
-            {
-                return View(await myContext.Where(x => x.Location.Address.Contains(searching) || searching == null).ToListAsync());
-            }
+                return View(await myContext.Where(x => (x.Name.Contains(searching) || x.Location.Address.Contains(searching)) || searching == null).ToListAsync());
+           
         }
 
         // GET: DepartmentViewModels/Details/5
