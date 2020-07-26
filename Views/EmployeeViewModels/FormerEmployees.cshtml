@@ -16,18 +16,10 @@
 @using (Html.BeginForm("FormerEmployees", "EmployeeViewModels", FormMethod.Get))
 {
 
-    <div class="input-group">
+    <form class="form-inline md-form mr-auto mb-4">
         <input id="searching" name="searching" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
 
-            <select class="btn btn-outline-light" name="selected" id="selected">
-                <option value="name">Name</option>
-                <option value="lastname">Last name</option>
-                <option value="job">Job</option>
-                <option value="department">Department</option>
-            </select>
-        </div>
-    </div>
+    </form>
 }
 
 

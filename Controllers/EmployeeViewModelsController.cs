@@ -45,30 +45,11 @@ namespace HRMSCrypto.Controllers
         }
 
         // GET: EmployeeViewModels
-        public async Task<IActionResult> FormerEmployees(string searching, string selected)
+        public async Task<IActionResult> FormerEmployees(string searching)
         {
             var myContext = _context.EmployeeViewModel.Include(e => e.Department).Include(e => e.Job);
-
-
-            if (selected == "name")
-            {
-                return View(await myContext.Where(x => (x.EndDate != null && (x.Name.Contains(searching) || searching == null))).ToListAsync());
-            }
-            else if (selected == "lastname")
-            {
-                return View(await myContext.Where(x => (x.EndDate != null && (x.LastName.Contains(searching) || searching == null))).ToListAsync());
-            }
-
-            else if (selected == "department")
-            {
-                return View(await myContext.Where(x => (x.EndDate != null && (x.Department.Name.Contains(searching) || searching == null))).ToListAsync());
-
-            }
-            else
-            {
-                return View(await myContext.Where(x => (x.EndDate != null && (x.Job.Name.Contains(searching) || searching == null))).ToListAsync());
-
-            }
+                return View(await myContext.Where(x => (x.EndDate != null && (x.Name.Contains(searching) || x.LastName.Contains(searching) || x.Department.Name.Contains(searching) || x.Job.Name.Contains(searching) || searching == null))).ToListAsync());
+           
         }
 
         // GET: EmployeeViewModels/Details/5
@@ -307,7 +288,7 @@ namespace HRMSCrypto.Controllers
             var employeeViewModel = await _context.EmployeeViewModel.FindAsync(id);
             _context.EmployeeViewModel.Remove(employeeViewModel);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(FormerEmployees));
         }
 
         private bool EmployeeViewModelExists(int id)
