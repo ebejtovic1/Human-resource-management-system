@@ -36,6 +36,7 @@ h10 {
 
 .btn-warning {
     color: white;
+    margin-bottom: 1px;
     background-color: #fea382 !important;
 }
 
@@ -141,6 +142,8 @@ img.pocetna {
     /* The image used */
     
     width: 100%;
+  
+   
 
     
 }
@@ -218,3 +221,4 @@ label {
         max-width:30.7%
     }
 }
+

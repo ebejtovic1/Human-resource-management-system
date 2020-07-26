@@ -62,7 +62,9 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
+
+                    @item.EndDate.Value.ToString("dd/MM/yyyy")
+                   
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Job.Name)
@@ -72,8 +74,8 @@
                 </td>
                 <td>
 
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    <a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Delete    </a>
                 </td>
             </tr>
         }
