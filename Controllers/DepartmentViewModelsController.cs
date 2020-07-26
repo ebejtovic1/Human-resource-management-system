@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HRMSCrypto.Models;
 using Microsoft.AspNetCore.Authorization;
+using HRMSCrypto.Reports;
+using Microsoft.AspNetCore.Hosting;
 
 namespace HRMSCrypto.Controllers
 {
@@ -16,6 +18,7 @@ namespace HRMSCrypto.Controllers
     {
         private readonly MyContext _context;
 
+        private IWebHostEnvironment _pdfWebHostEnvironment;
         public DepartmentViewModelsController(MyContext context)
         {
             _context = context;
@@ -53,6 +56,14 @@ namespace HRMSCrypto.Controllers
         {
             ViewData["LocationId"] = new SelectList(_context.LocationViewModel, "Id", "Address");
             return View();
+        }
+
+        public async Task<IActionResult> Report()
+        {
+            var myContext = _context.DepartmentViewModel.Include(d => d.Location);
+            List<DepartmentViewModel> listaDep = myContext.ToList();
+            ReportDepartment rep = new ReportDepartment(_pdfWebHostEnvironment, listaDep);
+            return File(rep.Report(), "application/pdf");
         }
 
         // POST: DepartmentViewModels/Create

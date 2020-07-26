@@ -83,12 +83,32 @@ namespace HRMSCrypto.Controllers
                 return NotFound();
             }
             var employee = _context.EmployeeViewModel.Find(id);
+            var department = _context.DepartmentViewModel.Find(employee.DepartmentId);
+            employee.Department = department;
+            var job = _context.JobViewModel.Find(employee.JobId);
+            employee.Job = job;
+            ViewData["DepartmentId"] = new SelectList(_context.DepartmentViewModel, "Id", "Name", employee.DepartmentId);
+            ViewData["JobId"] = new SelectList(_context.JobViewModel, "Id", "Name", employee.JobId);
             ReportEmployee rep = new ReportEmployee(_pdfWebHostEnvironment, employee);
-
-
             return File(rep.Report(), "application/pdf");
         }
-       
+
+        public async Task<IActionResult> ReportAll()
+        {
+            var myContext = _context.EmployeeViewModel.Include(e => e.Department).Include(e => e.Job);
+            List<EmployeeViewModel> listaDep = myContext.Where(x => x.EndDate == null).ToList();
+            ReportAll rep = new ReportAll(_pdfWebHostEnvironment, listaDep);
+            return File(rep.Report(), "application/pdf");
+        }
+
+        public async Task<IActionResult> ReportAllFormer()
+        {
+            var myContext = _context.EmployeeViewModel.Include(e => e.Department).Include(e => e.Job);
+            List<EmployeeViewModel> listaDep = myContext.Where(x => x.EndDate != null).ToList();
+            ReportFormer rep = new ReportFormer(_pdfWebHostEnvironment, listaDep);
+            return File(rep.Report(), "application/pdf");
+        }
+
 
         // GET: EmployeeViewModels/Create
         public IActionResult Create()

@@ -9,6 +9,10 @@
 
 <hr />
 
+<a class="btn btn-warning" asp-action="ReportAllFormer" target="_blank">
+    Create report
+</a>
+
 <div>
     <br />
 </div>
@@ -67,7 +71,7 @@
                     @Html.DisplayFor(modelItem => item.Department.Name)
                 </td>
                 <td>
-             
+
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>

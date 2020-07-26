@@ -15,13 +15,13 @@ using Font = iTextSharp.text.Font;
 
 namespace HRMSCrypto.Reports
 {
-    public class ReportAll
+    public class ReportFormer
     {
 
         IWebHostEnvironment webHostEnvironment;
         List<EmployeeViewModel> employees;
 
-        public ReportAll(IWebHostEnvironment _webHostEnvironment, List<EmployeeViewModel> _employees)
+        public ReportFormer(IWebHostEnvironment _webHostEnvironment, List<EmployeeViewModel> _employees)
         {
             webHostEnvironment = _webHostEnvironment;
             employees = _employees;
@@ -29,10 +29,10 @@ namespace HRMSCrypto.Reports
         }
 
         #region Declaration
-        int maxColumn = 9; // ime, prezime, datum rođenja, startDate, plata, adresa, email, job, department, 
+        int maxColumn = 6; // ime, prezime, datum rođenja, startDate, plata, adresa, email, job, department, 
         Document document;
         Font fontStyle;
-        PdfPTable pTable = new PdfPTable(9);
+        PdfPTable pTable = new PdfPTable(6);
         PdfPCell pCell;
         MemoryStream memStream = new MemoryStream();
 
@@ -118,21 +118,6 @@ namespace HRMSCrypto.Reports
             pCell.BackgroundColor = BaseColor.Cyan;
             pTable.AddCell(pCell);
 
-            pCell = new PdfPCell(new Phrase("Date of birth", fontStyleBold));
-            pCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            pCell.ExtraParagraphSpace = 8;
-            pCell.BackgroundColor = BaseColor.Cyan;
-            pTable.AddCell(pCell);
-
-            pCell = new PdfPCell(new Phrase("Address", fontStyleBold));
-            pCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            pCell.ExtraParagraphSpace = 8;
-            pCell.BackgroundColor = BaseColor.Cyan;
-            pTable.AddCell(pCell);
-
-
             pCell = new PdfPCell(new Phrase("Email", fontStyleBold));
             pCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -140,7 +125,7 @@ namespace HRMSCrypto.Reports
             pCell.BackgroundColor = BaseColor.Cyan;
             pTable.AddCell(pCell);
 
-            pCell = new PdfPCell(new Phrase("Start date", fontStyleBold));
+            pCell = new PdfPCell(new Phrase("End date", fontStyleBold));
             pCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
             pCell.ExtraParagraphSpace = 8;
@@ -161,12 +146,6 @@ namespace HRMSCrypto.Reports
             pCell.BackgroundColor = BaseColor.Cyan;
             pTable.AddCell(pCell);
 
-            pCell = new PdfPCell(new Phrase("Salary", fontStyleBold));
-            pCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            pCell.ExtraParagraphSpace = 8;
-            pCell.BackgroundColor = BaseColor.Cyan;
-            pTable.AddCell(pCell);
 
             pTable.CompleteRow();
 
@@ -191,20 +170,6 @@ namespace HRMSCrypto.Reports
                 pCell.ExtraParagraphSpace = 5;
                 pTable.AddCell(pCell);
 
-                pCell = new PdfPCell(new Phrase(employee.DateOfBirth.ToString("dd/MM/yyyy"), fontStyle));
-                pCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                pCell.ExtraParagraphSpace = 5;
-                pCell.BackgroundColor = BaseColor.White;
-                pTable.AddCell(pCell);
-
-                pCell = new PdfPCell(new Phrase(employee.Address, fontStyle));
-                pCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                pCell.ExtraParagraphSpace = 5;
-                pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                pCell.BackgroundColor = BaseColor.White;
-                pTable.AddCell(pCell);
-
                 pCell = new PdfPCell(new Phrase(employee.Email, fontStyle));
                 pCell.HorizontalAlignment = Element.ALIGN_CENTER;
                 pCell.ExtraParagraphSpace = 5;
@@ -212,7 +177,7 @@ namespace HRMSCrypto.Reports
                 pCell.BackgroundColor = BaseColor.White;
                 pTable.AddCell(pCell);
 
-                pCell = new PdfPCell(new Phrase(employee.StartDate.ToString("dd/MM/yyyy"), fontStyle));
+                pCell = new PdfPCell(new Phrase(employee.EndDate.Value.ToString("dd/MM/yyyy"), fontStyle));
                 pCell.HorizontalAlignment = Element.ALIGN_CENTER;
                 pCell.ExtraParagraphSpace = 5;
                 pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -227,13 +192,6 @@ namespace HRMSCrypto.Reports
                 pTable.AddCell(pCell);
 
                 pCell = new PdfPCell(new Phrase(employee.Department.Name, fontStyle));
-                pCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                pCell.ExtraParagraphSpace = 5;
-                pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                pCell.BackgroundColor = BaseColor.White;
-                pTable.AddCell(pCell);
-
-                pCell = new PdfPCell(new Phrase(employee.Salary.ToString(), fontStyle));
                 pCell.HorizontalAlignment = Element.ALIGN_CENTER;
                 pCell.ExtraParagraphSpace = 5;
                 pCell.VerticalAlignment = Element.ALIGN_MIDDLE;
