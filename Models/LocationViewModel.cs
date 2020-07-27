@@ -12,11 +12,11 @@ namespace HRMSCrypto.Models
         public int Id { get; set;}
         [Required]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^[a-zA-Z0-9àáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "The address field may only contain letters, numbers, apostrophes, spaces, hyphens, commas and dots")]
+        [RegularExpression(@"^[a-zA-Z0-9àáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.-]+$", ErrorMessage = "The address field may only contain letters, numbers, spaces, hyphens, commas and dots")]
         public String Address { get; set; }
         [Required]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^[a-zA-ZàáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "The city field may only contain letters, apostrophes, spaces, hyphens, commas and dots")]
+        [RegularExpression(@"^[a-zA-ZàáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.-]+$", ErrorMessage = "The city field may only contain letters, spaces, hyphens, commas and dots")]
         public String City { get; set; }
 
     

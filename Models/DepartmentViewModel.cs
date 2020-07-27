@@ -12,7 +12,7 @@ namespace HRMSCrypto.Models
         public int Id { get; set; }
         [Required]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^[a-zA-Z0-9àáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "The name field may only contain letters, apostrophes, numbers, spaces, hyphens, commas and dots")]
+        [RegularExpression(@"^[a-zA-Z0-9àáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.-]+$", ErrorMessage = "The name field may only contain letters, numbers, spaces, hyphens, commas and dots")]
         public String Name { get; set; }
         [Display(Name = "Location")]
         public int LocationId { get; set; }

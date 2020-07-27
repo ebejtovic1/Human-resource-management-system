@@ -10,7 +10,7 @@ namespace HRMSCrypto.Models
     {
         public int Id { get; set; }
 
-        [RegularExpression(@"^[a-zA-ZàáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "The name field may only contain letters, apostrophes, spaces, hyphens, commas and dots")]
+        [RegularExpression(@"^[a-zA-ZàáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.-]+$", ErrorMessage = "The name field may only contain letters, spaces, hyphens, commas and dots")]
         [DataType(DataType.Text)]
         [Required]
         public String Name { get; set; }

@@ -43,7 +43,7 @@ namespace HRMSCrypto.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [RegularExpression(@"^[a-zA-Z0-9àáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "The username may only contain letters, numbers, apostrophes, spaces, hyphens, commas and dots")]
+            [RegularExpression(@"^[a-zA-Z0-9àáâäãåąčćđęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.-]+$", ErrorMessage = "The username may only contain letters, numbers, spaces, hyphens, commas and dots")]
             [DataType(DataType.Text)]
             [Display(Name = "Username")]
             public string UserName { get; set; }
