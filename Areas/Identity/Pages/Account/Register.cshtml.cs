@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
 namespace HRMSCrypto.Areas.Identity.Pages.Account
-{
+{ // ebejtovic1 - Ovo_jetest1
     [Authorize(Roles ="Admin")]
     public class RegisterModel : PageModel
     {

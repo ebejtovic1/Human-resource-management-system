@@ -54,8 +54,8 @@ h10 {
 }
 
 .bg-white {
-    background-color: #c9ebfc!important;
-    font-family:Arial;
+    background-color: Rgba(255, 255, 255, 0.7) !important;
+    font-family: Arial;
 }
 
 
@@ -111,15 +111,27 @@ html {
   min-height: 100%;
 }
 
+
 body {
-    /* Margin bottom by footer height */
+    margin: 0;
+    background-image: url("../img/back.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #eceae5 !important;
+}
+
+/*body {
+    /* Margin bottom by footer height 
 
     height: 100%;
     margin: 0;
     background-color: #283453;
     color: white;
     padding-bottom: 30px;
-}
+}*/
 
 .table thead th {
     background-color: #f3f3f3;
@@ -165,6 +177,7 @@ img.pocetna {
     height:160px;
     width:160px;
     display: block;
+
 }
 
 @media (min-width: 576px) {
